@@ -1,0 +1,105 @@
+﻿@using AspNetCoreMVC_ODEV.Models
+@{
+    List<AspNetCoreMVC_ODEV.Models.Product> productList = ViewData["Products"] as List<AspNetCoreMVC_ODEV.Models.Product>;
+    List<AspNetCoreMVC_ODEV.Models.Category> categoryList = ViewData["Categories"] as List<AspNetCoreMVC_ODEV.Models.Category>;
+    List<AspNetCoreMVC_ODEV.Models.Supplier> supplierList = ViewData["Suppliers"] as List<AspNetCoreMVC_ODEV.Models.Supplier>;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1>Home/Index</h1>
+    <a href="/Product/Create">Create Product</a>
+    <a href="/Category/Create">Create Category</a>
+    <a href="/Supplier/Create">Create Supplier</a>
+    <hr />
+    <br />
+    <h1>Products</h1>
+    <table border="1" width="100%">
+        <tr>
+            <th>ID</th>
+            <th>ProductName</th>
+            <th>UnitPrice</th>
+        </tr>
+        @if(productList.Count > 0)
+        {
+            @foreach(Product p in productList)
+            {
+                <tr>
+                    <td>@p.ID</td>
+                    <td>@p.ProductName</td>
+                    <td>@p.UnitPrice</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3">
+                    <span>Herhangi bir urun bulunamadi!</span>
+                </td>
+            </tr>
+        }
+    </table>
+
+    <h1>Categories</h1>
+    <table border="1" width="100%">
+        <tr>
+            <th>ID</th>
+            <th>CategoryName</th>
+        </tr>
+        @if (categoryList.Count > 0)
+        {
+            @foreach (Category c in categoryList)
+            {
+                <tr>
+                    <td>@c.ID</td>
+                    <td>@c.CategoryName</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3">
+                    <span>Herhangi bir kategori bulunamadi!</span>
+                </td>
+            </tr>
+        }
+    </table>
+
+    <h1>Suppliers</h1>
+    <table border="1" width="100%">
+        <tr>
+            <th>ID</th>
+            <th>CompanyName</th>
+            <th>Address</th>
+        </tr>
+        @if (supplierList.Count > 0)
+        {
+            @foreach (Supplier s in supplierList)
+            {
+                <tr>
+                    <td>@s.ID</td>
+                    <td>@s.CompanyName</td>
+                    <td>@s.Address</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3">
+                    <span>Herhangi bir tedarikci bulunamadi!</span>
+                </td>
+            </tr>
+        }
+    </table>
+    
+    
+</body>
+</html>
